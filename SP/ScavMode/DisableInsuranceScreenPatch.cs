@@ -11,11 +11,11 @@ namespace SIT.Core.SP.ScavMode
 	{
 		protected override MethodBase GetTargetMethod()
 		{
-			return typeof(MainMenuController).GetMethod("method_74", BindingFlags.Public | BindingFlags.Instance);
+			return typeof(MainMenuControllerClass).GetMethod("method_79", BindingFlags.Public | BindingFlags.Instance);
 		}
 
 		[PatchPrefix]
-		static bool PatchPrefix(MainMenuController __instance, RaidSettings ___raidSettings_0)
+		static bool PatchPrefix(MainMenuControllerClass __instance, RaidSettings ___raidSettings_0)
 		{
 			if (Plugin.DisableInsuranceScreen.Value)
 				___raidSettings_0.RaidMode = ERaidMode.Local;
