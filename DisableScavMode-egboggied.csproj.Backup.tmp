@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	<TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>DisableScavMode-egboggied</AssemblyName>
+	<Authors>egbogtwo</Authors>
+    <Version>1.0.0</Version>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>latest</LangVersion>
+	  <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
+	  <Deterministic>false</Deterministic>
+	  <Title></Title>
+	  <RepositoryUrl>https://github.com/AlphaEndgame/DisableScavMode</RepositoryUrl>
+	  <Product>$(AssemblyName)</Product>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
+    <PackageReference Include="BepInEx.Core" Version="5.*" />
+    <PackageReference Include="BepInEx.PluginInfoProps" Version="1.*" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="UnityEngine.Modules" Version="2022.3.43" IncludeAssets="compile" />
+  </ItemGroup>
+  
+  <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
+  </ItemGroup>
+  
+  <ItemGroup>
+	<Reference Include="Assembly-CSharp" />
+	<Reference Include="BepInEx" />
+    <Reference Include="Comfort" />
+    <Reference Include="UnityEngine" />
+	<Reference Include="UnityEngine.CoreModule" />
+	<Reference Include="UnityEngine.UI" />
+	<Reference Include="spt-reflection" />
+	<Reference Include="spt-common" />
+  </ItemGroup>
+ 
+  
+</Project>
