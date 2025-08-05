@@ -10,14 +10,14 @@ public class Plugin : BaseUnityPlugin {
     public static ConfigEntry<bool> DisableInsuranceScreen { get; set; }
 
     private void Awake() {
-        initConfig();
+        InitConfig();
         new DisableScavModePatch().Enable();
         new DisableInsuranceScreenPatch().Enable();
     }
 
-    private void initConfig() {
-        var insuranceScreen = "Disable Insurance Screen";
+    private void InitConfig() {
+        const string insuranceScreen = "Disable Insurance Screen";
 
-        DisableInsuranceScreen = Config.Bind<bool>(insuranceScreen, "Skips insurance screen if enabled.", true);
+        DisableInsuranceScreen = Config.Bind(insuranceScreen, "Skips insurance screen if enabled.", true);
     }
 }
