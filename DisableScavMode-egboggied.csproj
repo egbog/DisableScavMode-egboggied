@@ -23,12 +23,9 @@
     <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
     <PackageReference Include="BepInEx.Core" Version="5.*" />
     <PackageReference Include="BepInEx.PluginInfoProps" Version="1.*" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="UnityEngine.Modules" Version="2022.3.43" IncludeAssets="compile" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
   
-  <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
   <!-- Allow go to declaration using project source instead of decompiled source -->
   <ItemGroup Condition="'$(Configuration)'=='Source-Debug'">
     <ProjectReference Include="..\Decompiled-SPT4.0.0\Assembly-CSharp\Assembly-CSharp.csproj" />
@@ -39,16 +36,13 @@
   </ItemGroup>
   
   <ItemGroup>
-	<Reference Include="Assembly-CSharp" />
-	<Reference Include="BepInEx" />
-    <Reference Include="Comfort" />
     <Reference Include="UnityEngine" />
 	<Reference Include="UnityEngine.CoreModule" />
 	<Reference Include="UnityEngine.UI" />
 	<Reference Include="spt-reflection" />
 	<Reference Include="spt-common" />
+	<Reference Include="Sirenix.Serialization" />
   </ItemGroup>
- 
   
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="PowerShell.exe -ExecutionPolicy Bypass -File &quot;$(ProjectDir)\PostBuild.ps1&quot; -DebugMode &quot;$(DebugMode)&quot; -AssemblyName &quot;$(AssemblyName)&quot; -Configuration &quot;$(ConfigurationName)&quot; -Framework &quot;$(TargetFramework)&quot;" />
