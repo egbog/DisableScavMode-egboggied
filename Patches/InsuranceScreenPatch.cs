@@ -4,7 +4,7 @@ using SPT.Reflection.Patching;
 
 namespace _DisableScavMode_egboggied.Patches;
 
-public class DisableInsuranceScreenPatch : ModulePatch {
+public class InsuranceScreenPatch : ModulePatch {
     protected override MethodBase GetTargetMethod() {
         return typeof(MainMenuControllerClass).GetMethod("method_81", BindingFlags.Public | BindingFlags.Instance);
     }
