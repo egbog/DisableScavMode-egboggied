@@ -10,6 +10,13 @@
 	  <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
 	  <Deterministic>false</Deterministic>
 	  <Authors>egbog</Authors>
+	  <Configurations>Debug;Release;Source-Debug</Configurations>
+	  <RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
+  
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	<DebugType>Full</DebugType>
+	<Optimize>false</Optimize>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,6 +29,13 @@
   
   <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
+  <!-- Allow go to declaration using project source instead of decompiled source -->
+  <ItemGroup Condition="'$(Configuration)'=='Source-Debug'">
+    <ProjectReference Include="..\Decompiled-SPT4.0.0\Assembly-CSharp\Assembly-CSharp.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup Condition="'$(Configuration)'!='Source-Debug'">
+    <Reference Include="Assembly-CSharp" />
   </ItemGroup>
   
   <ItemGroup>
@@ -35,5 +49,9 @@
 	<Reference Include="spt-common" />
   </ItemGroup>
  
+  
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="PowerShell.exe -ExecutionPolicy Bypass -File &quot;$(ProjectDir)\PostBuild.ps1&quot; -DebugMode &quot;$(DebugMode)&quot; -AssemblyName &quot;$(AssemblyName)&quot; -Configuration &quot;$(ConfigurationName)&quot; -Framework &quot;$(TargetFramework)&quot;" />
+  </Target>
   
 </Project>
