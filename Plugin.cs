@@ -12,8 +12,8 @@ public class Plugin : BaseUnityPlugin {
 
     private void Awake() {
         InitConfig();
-        new DisableScavModePatch().Enable();
-        new DisableInsuranceScreenPatch().Enable();
+        new ScavModePatch().Enable();
+        new InsuranceScreenPatch().Enable();
     }
 
     private void InitConfig() {

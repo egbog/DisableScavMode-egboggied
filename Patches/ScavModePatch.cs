@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 namespace _DisableScavMode_egboggied.Patches;
 
-public class DisableScavModePatch : ModulePatch {
+public class ScavModePatch : ModulePatch {
     protected static Vector3 OldPmcPos { get; set; } = Vector3.zero;
 
     protected static bool IsPosSaved() {
